@@ -6,33 +6,24 @@ import java.util.Properties;
 
 public class ConfigurationProperties {
 
-    protected static FileInputStream fileInputStream;
-    protected static Properties PROPERTIES;
-    public static String propertyFile;
+    private static Properties properties;
+    private static String propertyFile;
 
     protected static void setProperties() {
-        try {
-            fileInputStream = new FileInputStream(propertyFile);
-            PROPERTIES = new Properties();
-            PROPERTIES.load(fileInputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fileInputStream != null)
-                try {
-                    fileInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        try (FileInputStream fileInputStream = new FileInputStream(propertyFile)) {
+            properties = new Properties();
+            properties.load(fileInputStream);
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
     public static String getProperty(String key) {
-        return PROPERTIES.getProperty(key);
+        return properties.getProperty(key);
     }
 
-    public ConfigurationProperties(String propertyFilePath) {
-        propertyFile = propertyFilePath;
-        setProperties();
+    public ConfigurationProperties(String propertyPath) {
+        propertyFile = propertyPath;
+        setProperties(); //TODO fix
     }
 }
