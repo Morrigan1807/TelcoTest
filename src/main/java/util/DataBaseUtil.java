@@ -10,10 +10,8 @@ import java.util.List;
 public class DataBaseUtil {
 
     public static void writeFilenameInDataBase(SqlConnection sqlConnection, String filename) {
-        List<String> allData = new ArrayList<>();
-
         try (Connection connection = sqlConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement("INSERT INTO FILEINFO VALUES (?, ?)")) {
+             PreparedStatement statement = connection.prepareStatement("INSERT INTO FILEINFO(filename, time_of_creation) VALUES (?, ?)")) {
             statement.setString(1, filename);
             statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
 
@@ -34,7 +32,7 @@ public class DataBaseUtil {
                 String filename = rs.getString("filename");
                 Timestamp timeOfCreation = rs.getTimestamp("time_of_creation");
 
-                allData.add(String.format("file:%s\t||\t date:%s.", filename, timeOfCreation));
+                allData.add(String.format("file: %s\t||\tdate: %s.", filename, timeOfCreation));
             }
         } catch (Exception exception) {
             exception.printStackTrace();

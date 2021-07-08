@@ -10,6 +10,5 @@ public class Main {
                 .password(ConfigurationProperties.getProperty("sql_password"))
                 .databaseName(ConfigurationProperties.getProperty("sql_database"))
                 .build();
-
     }
 }

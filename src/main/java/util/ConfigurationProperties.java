@@ -9,6 +9,11 @@ public class ConfigurationProperties {
     private static Properties properties;
     private static String propertyFile;
 
+    public ConfigurationProperties(String propertyPath) {
+        propertyFile = propertyPath;
+        setProperties(); //TODO fix
+    }
+
     protected static void setProperties() {
         try (FileInputStream fileInputStream = new FileInputStream(propertyFile)) {
             properties = new Properties();
@@ -20,10 +25,5 @@ public class ConfigurationProperties {
 
     public static String getProperty(String key) {
         return properties.getProperty(key);
-    }
-
-    public ConfigurationProperties(String propertyPath) {
-        propertyFile = propertyPath;
-        setProperties(); //TODO fix
     }
 }
