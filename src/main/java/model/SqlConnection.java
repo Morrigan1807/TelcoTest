@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @Builder
-@Getter
 public class SqlConnection {
 
     private static final String mySqlDriver = "org.gjt.mm.mysql.Driver";
