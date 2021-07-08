@@ -1,7 +1,6 @@
 package model;
 
 import lombok.Builder;
-import lombok.Getter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
