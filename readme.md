@@ -11,5 +11,5 @@
    sql_password=password
    sql_database=database_name
    ```
-3. Run project in terminal with command: `java src/main/java/Main.java <path>`.
+3. Run project in terminal with command: `java -jar target\TelcoTest-1.0-SNAPSHOT.jar <path>`.
 Replace `<path>` with the path to property file.

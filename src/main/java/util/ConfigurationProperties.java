@@ -7,15 +7,9 @@ import java.util.Properties;
 public class ConfigurationProperties {
 
     private static Properties properties;
-    private static String propertyFile;
 
-    public ConfigurationProperties(String propertyPath) {
-        propertyFile = propertyPath;
-        setProperties(); //TODO fix
-    }
-
-    protected static void setProperties() {
-        try (FileInputStream fileInputStream = new FileInputStream(propertyFile)) {
+    public static void setProperties(String propertyPath) {
+        try (FileInputStream fileInputStream = new FileInputStream(propertyPath)) {
             properties = new Properties();
             properties.load(fileInputStream);
         } catch (IOException exception) {

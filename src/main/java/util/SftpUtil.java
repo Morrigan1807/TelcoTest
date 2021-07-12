@@ -12,9 +12,11 @@ public class SftpUtil {
         List<String> fileNames = new ArrayList<>();
         JSch jsch = new JSch();
         try {
-            Session session = jsch.getSession("demo", "test.rebex.net", 22);//TODO read from prop
+            Session session = jsch.getSession(ConfigurationProperties.getProperty("sftp_user"),
+                    ConfigurationProperties.getProperty("sftp_host"),
+                    Integer.parseInt(ConfigurationProperties.getProperty("sftp_port")));
             session.setConfig("StrictHostKeyChecking", "no");
-            session.setPassword("password");//TODO read from prop
+            session.setPassword(ConfigurationProperties.getProperty("sftp_password"));
             session.connect();
 
             Channel channel = session.openChannel("sftp");

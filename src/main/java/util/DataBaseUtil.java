@@ -12,8 +12,8 @@ public class DataBaseUtil {
     private static final String INSERT_FILEINFO = "INSERT INTO FILEINFO(filename, time_of_creation) VALUES (?, ?)";
     private static final String SELECT_ALL_FILEINFO = "SELECT filename, time_of_creation FROM FILEINFO";
 
-    public static void writeFilenameInDataBase(SqlConnection sqlConnection, String filename) {
-        try (Connection connection = sqlConnection.getConnection();
+    public static void writeFilenameInDataBase(String filename) {
+        try (Connection connection = SqlConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(INSERT_FILEINFO)) {
             statement.setString(1, filename);
             statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
@@ -24,10 +24,10 @@ public class DataBaseUtil {
         }
     }
 
-    public static List<String> getAllFromDataBase(SqlConnection sqlConnection) {
+    public static List<String> getAllFromDataBase() {
         List<String> allData = new ArrayList<>();
 
-        try (Connection connection = sqlConnection.getConnection();
+        try (Connection connection = SqlConnection.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(SELECT_ALL_FILEINFO);
 
