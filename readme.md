@@ -1,4 +1,4 @@
-1. Build project with maven goal: `mvn clean install`
+1. Build project with maven goal: `mvn clean install assembly:single`
 2. Fill property file as:
    ```
    sftp_host=127.0.0.1
@@ -11,5 +11,5 @@
    sql_password=password
    sql_database=database_name
    ```
-3. Run project in terminal with command: `java -jar target\TelcoTest-1.0-SNAPSHOT.jar <path>`.
+3. Run project in terminal with command: `java -jar target\TelcoTest.jar <path>`.
 Replace `<path>` with the path to property file.

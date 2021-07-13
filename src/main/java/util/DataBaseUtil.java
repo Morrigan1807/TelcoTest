@@ -1,12 +1,13 @@
 package util;
 
-import model.SqlConnection;
+import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class DataBaseUtil {
 
     private static final String INSERT_FILEINFO = "INSERT INTO FILEINFO(filename, time_of_creation) VALUES (?, ?)";
@@ -20,7 +21,7 @@ public class DataBaseUtil {
 
             statement.executeUpdate();
         } catch (SQLException | ClassNotFoundException exception) {
-            exception.printStackTrace();
+            log.error(exception.getStackTrace());
         }
     }
 
@@ -38,7 +39,7 @@ public class DataBaseUtil {
                 allData.add(String.format("file: %s\t||\tdate: %s.", filename, timeOfCreation));
             }
         } catch (SQLException | ClassNotFoundException exception) {
-            exception.printStackTrace();
+            log.error(exception.getStackTrace());
         }
 
         return allData;
