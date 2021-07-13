@@ -21,7 +21,7 @@ public class ValidationUtil {
 
     public static void validateAbsolutePath(String filepath) throws IOException {
         if (!filepath.matches(ABSOLUTE_PATH_LINUX_REGEX) &&
-        !filepath.matches(ABSOLUTE_PATH_WINDOWS_REGEX)) {
+                !filepath.matches(ABSOLUTE_PATH_WINDOWS_REGEX)) {
             throw new IOException(String.format("Incorrect filepath in: %s", filepath));
         }
         File file = new File(filepath);

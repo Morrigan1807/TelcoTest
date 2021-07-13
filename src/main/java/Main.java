@@ -17,7 +17,7 @@ public class Main {
         try {
             ValidationUtil.validateAbsolutePath(args[0]);
             ConfigurationProperties.setProperties(args[0]);
-            
+           
             List<String> fileNames = SftpUtil.downloadAndGetAllFileNames(ConfigurationProperties.getProperty(SFTP_REMOTE_DIR_PROPERTY),
                     ConfigurationProperties.getProperty(LOCAL_DIR_PROPERTY));
             fileNames.forEach(DataBaseUtil::writeFilenameInDataBase);
