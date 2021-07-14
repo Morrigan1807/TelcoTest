@@ -13,4 +13,8 @@ public final class Constant {
     public static final String SFTP_PASSWORD_PROPERTY = "sftp_password";
     public static final String SFTP_REMOTE_DIR_PROPERTY = "sftp_remote_dir";
     public static final String LOCAL_DIR_PROPERTY = "local_dir";
+
+    private Constant() {
+
+    }
 }

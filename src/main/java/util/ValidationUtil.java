@@ -19,6 +19,10 @@ public class ValidationUtil {
     private static final String HOSTNAME_REGEX = "(?i)^(([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])\\.)*" +
             "([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])$";
 
+    private ValidationUtil() {
+
+    }
+
     public static void validateAbsolutePath(String filepath) throws IOException {
         if (!filepath.matches(ABSOLUTE_PATH_LINUX_REGEX) &&
                 !filepath.matches(ABSOLUTE_PATH_WINDOWS_REGEX)) {

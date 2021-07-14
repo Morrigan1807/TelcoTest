@@ -16,6 +16,10 @@ import static util.Constant.*;
 @Log4j2
 public class SqlConnection {
 
+    private SqlConnection() {
+
+    }
+
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Properties properties = new Properties();
         try (InputStream input = ClassLoader.getSystemClassLoader().getResourceAsStream(SQL_PROPERTIES)) {

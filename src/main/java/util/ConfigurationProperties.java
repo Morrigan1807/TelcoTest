@@ -11,6 +11,10 @@ public class ConfigurationProperties {
 
     private static Properties properties;
 
+    private ConfigurationProperties() {
+
+    }
+
     public static void setProperties(String propertyPath) {
         try (FileInputStream fileInputStream = new FileInputStream(propertyPath)) {
             properties = new Properties();
