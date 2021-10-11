@@ -28,6 +28,7 @@ public class Main {
             fileNames.forEach(DataBaseUtil::writeFilenameInDataBase);
             log.info("Trying to read data from DB.");
             DataBaseUtil.getAllFromDataBase().forEach(System.out::println);
+            System.out.println();
         } catch (IOException | IndexOutOfBoundsException exception) {
             log.error(exception.getMessage());
         }
